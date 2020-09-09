@@ -1,44 +1,45 @@
-##Please Note##
+## Please Note
 
 In the interest in not wasting peoples time, if you are considering using elephanet, please take a look at http://jasperfx.github.io/marten/ as it's far more complete that this project, with a far more active
 contributer base, yet it follows many of the same goals.
 
 [![Build Status](https://travis-ci.org/YoloDev/elephanet.svg?branch=master)](https://travis-ci.org/YoloDev/elephanet) 
-##Elephanet - A .NET document database built on PostgreSQL.##
 
-###With an api thats easy to use###
+## Elephanet - A .NET document database built on PostgreSQL
 
-A document db api backed by Postgresql.
+### With an API thats easy to use
+
+A document db API backed by PostgreSQL.
 
 Heavily influenced by the RavenDb .NET client, this libary provides a simple api to allow easy use of postgres as a document store, taking advantage of Postgresql 9.4 and its new jsonb indexing, allowing for fast querying of native json objects.
 
-###Quick Start
+### Quick Start
 
 For Windows
 
 1.  Install Postgresql > 9.4 (available at http://www.postgresql.org/download/windows/). When you do so, pay particular attention to your postgres user password (you will need this in the next step)
-2.  Clone (or fork) this repository
-3.  Alter create_store.sql file and replace "my super secret password" with your own password
-4.  Run create_store.bat from within a cmd prompt.
+1.  Clone (or fork) this repository
+1.  Alter create_store.sql file and replace "my super secret password" with your own password
+1.  Run create_store.bat from within a cmd prompt.
 
 For Ubuntu (and likely other Debian based distros)
 
 1.  Install Postgresql via apt-get.  Make sure it is greater than version 9.4
-2.  Install Mono (http://www.mono-project.com/docs/getting-started/install/linux/)
-3.  Clone (or fork) this repository
-4.  Alter create_store.sql file and replace "my super secret password" with your own password
-5.  run `psql -f create_store.sql -U postgres`
+1.  Install Mono (http://www.mono-project.com/docs/getting-started/install/linux/)
+1.  Clone (or fork) this repository
+1.  Alter create_store.sql file and replace "my super secret password" with your own password
+1.  run `psql -f create_store.sql -U postgres`
 
-###Got Questions?
+### Got Questions?
 
 - https://jabbr.net/#/rooms/elephanet (chat) 
 - https://groups.google.com/d/forum/elephanet (forum)
 
 
 
-###Example Code
+### Example Code
 
-```
+```c#
 using System;
 
 public class Car
@@ -51,7 +52,7 @@ public class Car
 }
 ```
 
-```
+```c#
 	//create the datastore
 	DocumentStore store = new DocumentStore("Server=127.0.0.1;Port=5432;User Id=store_user;password=my super secret password;database=store;");
 	
@@ -134,21 +135,21 @@ public class Car
 	
 ```
 
-###Currently implemented###
+### Currently Implemented
 
-* You can ```session.Store<T>(T entity)```
-* You can ```session.SaveChanges();```
-* You can ```session.GetById<T>(Guid id)```
-* You can ```session.GetByIds<T>(IEnumerable<Guid> ids)```
-* You can ```session.Delete<T>(Guid id)```
-* You can ```session.GetAll<T>();```
-* You can ```session.DeleteAll<T>();```
-* You can ```session.Query<T>(x => x.SomeAttribute == "some value").ToList();```
-* You can ```session.Query<T>(x => x.SomeAttribute == "some value").Take(10).Skip(5);```
-* You can ```session.Query<T>(x => x.SomeAttribute == "some value").OrderBy(c => c.SomeOtherAttibute);```
-* You can ```session.Query<T>(x => x.SomeAttribute == "some value").OrderByDescending(c => c.SomeOtherAttibute);```
+* You can `session.Store<T>(T entity)`
+* You can `session.SaveChanges();`
+* You can `session.GetById<T>(Guid id)`
+* You can `session.GetByIds<T>(IEnumerable<Guid> ids)`
+* You can `session.Delete<T>(Guid id)`
+* You can `session.GetAll<T>();`
+* You can `session.DeleteAll<T>();`
+* You can `session.Query<T>(x => x.SomeAttribute == "some value").ToList();`
+* You can `session.Query<T>(x => x.SomeAttribute == "some value").Take(10).Skip(5);`
+* You can `session.Query<T>(x => x.SomeAttribute == "some value").OrderBy(c => c.SomeOtherAttibute);`
+* You can `session.Query<T>(x => x.SomeAttribute == "some value").OrderByDescending(c => c.SomeOtherAttibute);`
 
-###Things of note:
+### Things of Note
 
 * You can implement your own custom json serialization (Jil is internalised by default)
 * Store<T>() is a unit of work stored in memory.  SaveChanges() flushes the in memory values to the database
